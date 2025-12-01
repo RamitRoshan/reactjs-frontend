@@ -56,3 +56,69 @@ Now adays, people don't use static website. They use Dynamic website.
 ### 📍DataType/Values that are not printed on the UI/screen in reactjs :
 1. undefined
 2. boolean (true & false)
+
+
+#### true == 'true' <br>
+The answer is wrong, one is boolean and another one is string.
+
+
+Q). Here's given an array of String and we have to transform all the element into UPPER Case. 
+
+code: 
+
+```
+const names = ["JavaScript", "Express JS", "Node JS"];
+//o/p - ["JAVASCRIPT", "EXPRESS JS", "NODE JS"]
+
+const result = [];
+for (let i = 0; i < names.length; i++) {
+  result.push(names[i].toUpperCase());
+}
+console.log(result);
+
+
+2nd Methods:
+
+const names = ["JavaScript", "Express JS", "Node JS"];
+//o/p - ["JAVASCRIPT", "EXPRESS JS", "NODE JS"]
+
+const result = names.map(function(ele) {
+  return ele.toUpperCase();
+});
+console.log(result);
+```
+
+## Array map method is used to create a new array of the same length. & the value can be transformed..
+
+
+Q). What is difference btw the ul tags and li tags ? <br>
+ans: Parent and child, so we can say that "ul" is a parent  and "li" are the childrens.
+
+```
+ <ul>
+        <li>{names[0]}</li>
+        <li>{names[1]}</li>
+        <li>{names[2]}</li>
+        <li>{names[5]}</li>
+ </ul>
+```
+
+Q). What is the relationship btw the ul tags and h2 tags ? <br>
+ans: they are siblings, bcz they are one next to each other.
+
+```
+<h2>Total - {names.length}</h2>
+      <ul></ul>
+```
+
+
+### map is helping to transform the element
+
+code:
+```
+let names = ["abc", "ab", "a"];
+names = names.map(ele => ele.length);
+console.log(names); // [3, 2, 1]
+```
+
+- Map returns an array, so li tags will also return an array.
