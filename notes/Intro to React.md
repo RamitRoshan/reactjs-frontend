@@ -1,5 +1,7 @@
 Q). When we choose to use unordered list and ordered list? <br>
+
 ans: when we wants to display a number, then we will use **ordered list**.  (ol tags) <br>
+
 e.g: for recipie : we use order list , like 1st do this , then do this.
 
 - when numbering is not neccessary then we will going to use **unordered list**.  (ul tags)
@@ -122,3 +124,67 @@ console.log(names); // [3, 2, 1]
 ```
 
 - Map returns an array, so li tags will also return an array.
+
+
+
+## Final Code :
+
+```
+import "./styles.css";
+
+export default function App() {
+  const names = ["JavaScript", "Html", "CSS", "Nodejs", "ExpressJS", "Java"];
+
+  const colors = ["red", "orange", "yellow", "blue", "black"];
+
+  return (
+    <div className="App">
+      <h1>Technology, I'm learning</h1>
+      <h2>Listing Technologies - {names.length}</h2>
+      <ul>
+        {names.map((ele) => {
+          return <li>{ele}</li>;
+        })}
+      </ul>
+
+      
+      {/* Here we are printing length of color 
+      as well as list of all color, and there 1st letter
+      is Capital, and rest all are small.
+      and respective of color name, their color is 
+      also same. Red has Red color. */}
+
+
+      <h2>Total colors - {colors.length}</h2>
+      <ul>
+        {colors.map((ele) => {
+          return (
+            <li style={{ color: ele }}>
+              {ele[0].toUpperCase() + ele.slice(1)}
+            </li>
+          );
+        })}
+      </ul>
+    </div>
+  );
+}
+ 
+Output: 
+
+Technology, I'm learning
+
+Listing Technologies - 6
+- JavaScript
+- Html
+- CSS
+- Nodejs
+- ExpressJS
+- Java
+
+Total colors - 5
+- Red
+- Orange
+- Yellow
+- Blue
+- Black
+ 
