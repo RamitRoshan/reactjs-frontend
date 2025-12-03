@@ -55,7 +55,7 @@ Now adays, people don't use static website. They use Dynamic website.
 - Embed expression inside JSX. (we use- {} for this).
 
 
-### 📍DataType/Values that are not printed on the UI/screen in reactjs :
+### 📍DataType/Values that are not printed/display on the UI/screen in reactjs :
 1. undefined
 2. boolean (true & false)
 

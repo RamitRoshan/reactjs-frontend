@@ -178,3 +178,43 @@ I.Q:<br>
 **In backend we use (equivalent to frontend),**
        
        const {PieChart} = require('react-chartkick');
+
+
+Q). How the all information stored ? 
+ans: In our database, everything is stored as **array of objects**..
+
+
+## Notes:
+
+1. If you have an object in react, then you cannot print/display an Object on the UI.
+<br>
+like if there is an object name: person, here if we wants to print object then I have to do person.name . but directly we cannot print only person.
+
+
+2. Every time, we are performing **map** then for the key props, we have to specify some unique identifiers. <br>
+If **id** is given then use it , as id is going to be unique.
+<br>
+If we are using array of objects then, that objects have a unique identifier id. 
+
+But when we don't have an **array of objects** and all we have is array of primitives, then don't rely on the elements in the array to get the unique value, bcz they also can be dublicates. <br>
+
+**so** make use of the **index**.
+bcz without using the key map will give error in the console(browser).
+
+
+code:
+
+```
+const arr = ["React", "JSX", "Component"];
+  <ul>
+        {arr.map((ele, index) => {
+          return <li key={index}>{ele}</li>;
+        })}
+  </ul>
+```
+
+3. When we are working with array of Primitives, then use the **index** value as the key. <br>
+   
+   && <br>
+
+When working with **array of objects,**  use the **ID** as the key. 
