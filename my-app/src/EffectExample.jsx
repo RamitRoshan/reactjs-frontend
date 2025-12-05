@@ -17,7 +17,7 @@ export default function EffectExample(){
    },[]); // effect is called only once after the initial render 
 
    /*
-   class Component 
+   class Component (previously we use this methods)
 
     componentDidMount(){ 
         axios.get(); 
