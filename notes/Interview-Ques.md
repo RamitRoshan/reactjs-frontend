@@ -107,3 +107,6 @@ export default function EffectExample2() {
 }
 ```
 
+o/p:  (here there are 10 list of userid and whenever we click on any id , it should show us users email and name)
+![alt text](image-1.png)
+
