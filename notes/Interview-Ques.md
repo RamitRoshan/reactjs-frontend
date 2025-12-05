@@ -19,7 +19,7 @@ Q9). What is props ? What is props drilling ?
 Q10). How do you overcome from props drilling ?
 
 
-
+I.Q) Database design round(ER diagram)
 
 
 

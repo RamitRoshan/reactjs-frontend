@@ -9,4 +9,5 @@ SPAs use **JavaScript** to handle navigation and **only update necessary parts o
 #### How SPAs Work ? 
 
 1. Initial Load: When a user visits an SPA, the browser loads a single HTML page along with JavaScript, CSS and other assests.
-2. Client-Side Routing: Nat
+   
+2. Client-Side Routing: Navigation within the application is handled by JavaScript (React Router, Vue Router, etc)
