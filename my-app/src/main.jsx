@@ -12,7 +12,7 @@ createRoot(document.getElementById('root')).render(
 
     {/* <EffectExample2/> */}
 
-    <DynamicSelect/>
+    {/* <DynamicSelect/> */}
 
     <EmployeeList/>
     </>
