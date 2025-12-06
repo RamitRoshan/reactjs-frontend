@@ -3,6 +3,7 @@ import App from './App.jsx'
 import EffectExample from './EffectExample.jsx'
 import EffectExample2 from './EffectExample2.jsx'
 import DynamicSelect from './DynamicSelect.jsx'
+import EmployeeList from './EmployeeList.jsx'
 
 createRoot(document.getElementById('root')).render(
     <>
@@ -12,6 +13,8 @@ createRoot(document.getElementById('root')).render(
     {/* <EffectExample2/> */}
 
     <DynamicSelect/>
+
+    <EmployeeList/>
     </>
     
 )
