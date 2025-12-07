@@ -1,26 +1,29 @@
-Inter.Q). What are Components ? <br>
+Inter.Q1). What are Components ? <br>
 
-Inter.Q). What is virtual DOM ? <br>
+Inter.Q2). What is virtual DOM ? <br>
 
-Inter.Q). What is the difference btw library and frameworks ? <br>
+Inter.Q3). What is the difference btw library and frameworks ? <br>
 
-Inter.Q). What is an SPA(single page applications) ? <br>
+Inter.Q4). What is an SPA(single page applications) ? <br>
 
-Inter.Q). What is component based architecture? <br>
+Inter.Q5). What is component based architecture? <br>
 
-Inter.Q).What is data binding or One-way Data Binding ?
+Inter.Q6).What is data binding or One-way Data Binding ?
 
-Q). How do you pass data from parent component to child component ? ~ we can do via a props.
+Q7). How do you pass data from parent component to child component ? ~ we can do via a props.
 
-Q). How to update the state, in the parent component from the child component.
+Q8). How to update the state, in the parent component from the child component.
 
-Q9). What is props ? What is props drilling ?
+Q9). What is props ? What is props drilling ? can we modify props ?
 
 Q10). How do you overcome from props drilling ?
 
 
-I.Q) Database design round(ER diagram)
+Q11). Database design round(ER diagram)
 
+Q12). How do you load a file into your application? <br>
+ In frontend -> using ES6 module loader <br>
+ In backend -> we are using common JS module loader
 
 
 # Questions:
