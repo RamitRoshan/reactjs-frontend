@@ -1,12 +1,60 @@
-export default function TaskList({tasks}){
+// export default function TaskList({tasks, setTasks}){
+
+
+//     const handleRemove = (id) => {
+//         const filteredTasks = tasks.filter(task => task.id !== id);
+//         alert("are you sure to delete ? ");
+//         setTasks(filteredTasks);  //update UI
+//     }
+
+   
+//     return(
+//         <div>
+//             {tasks.length == 0 && <p>No tasks found, Add your nes task</p>}
+//             <ul>
+//                 {tasks.map((ele) => {
+//                     return (
+//                       <li key={ele.id}>{ele.title} 
+//                       <button onClick={() => handleRemove(ele.id)}>remove</button>
+//                     </li>
+//                     );
+//                 })}
+//             </ul>
+            
+//         </div>
+//     );
+// }
+
+//another(2nd) ways to solve it
+
+export default function TaskList({tasks, removeTask}){
+
+
+    const handleRemove = (id) => {
+        const userConfirm = window.confirm("Are you sure")
+        if(userConfirm){
+            removeTask(id);
+        }
+    }
+
+   
     return(
         <div>
             {tasks.length == 0 && <p>No tasks found, Add your nes task</p>}
             <ul>
                 {tasks.map((ele) => {
-                    return <li key={ele.id}>{ele.title}</li>
+                    return (
+                      <li key={ele.id}>{ele.title} 
+                      <button onClick={() => handleRemove(ele.id)}>remove</button>
+                    </li>
+                    );
                 })}
             </ul>
+            
         </div>
     );
 }
+
+
+
+ 

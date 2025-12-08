@@ -11,12 +11,19 @@ function App() {
     setTasks([...tasks, taskObj]);
   }
 
+  const removeTask =(id) => {
+    const result = tasks.filter((ele) => {
+      return ele.id != id;
+    });
+    setTasks(result);
+  }
+
   return (
     <>
       <div>
         <h1>Task App</h1>
         <h2>Listing Tasks - {tasks.length}</h2>
-         <TaskList tasks={tasks}/>
+         <TaskList tasks={tasks} removeTask={removeTask}/>
          <TaskForm addTask={addTask}/>
       </div>
     </>
@@ -24,3 +31,4 @@ function App() {
 }
 
 export default App
+

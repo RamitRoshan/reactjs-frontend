@@ -45,6 +45,12 @@ Ex: A button component can be reused multiple times in an application.
 - A component is nothing, but a JavaScript functions in react. (in short, a component is a functions).
 
 
+### Q). Why Use Components?
+
+![alt text](image-4.png)
+
+
+<br>
 Q). How do you load a file into your application? <br>
 
  In frontend -> using ES6 module loader <br> 
@@ -61,6 +67,63 @@ Q). How do you load a file into your application? <br>
 Props (short for Properties) are used to pass data from one component to another, mainly from parent → child.
 
 <br>
+
+Example of Using Props :
+                  
+                  function Greeting(props){
+                    return <h1>Hello, {props.name} !</h1>
+                  }
+                  
+<br>
+
+Code using props:
+```
+=> App.js
+
+import "./styles.css";
+import Contact from "./Contact";
+
+export default function App() {
+  return (
+    <div className="App">
+      <h1>Hello React</h1>
+
+      <img src="" alt="" />
+      <a href="http://www.google.com">Google</a>
+
+      <Contact
+        name="siyaram"
+        email="siyaram@gmail.com"
+        mobile="9798810047"
+        company="ramitai"
+      />
+
+      <hr />
+
+      <Contact
+        name="maamahadev"
+        email="maaMahadev@gmail.com"
+        mobile="9793810047"
+        company="Mahadevai"
+      />
+    </div>
+  );
+}
+
+=> contact.js (component)
+
+export default function Contact(props) {
+  return (
+    <div>
+      <p> Name: {props.name}</p>
+      <p>Email: {props.email}</p>
+      <p>Mobile: {props.mobile}</p>
+      <p>Company: {props.company}</p>
+    </div>
+  );
+}
+
+```
 
 **Props are read-only data used to pass information from a parent component to a child component in React**
 
