@@ -14,7 +14,7 @@ Q7). How do you pass data from parent component to child component ? ~ we can do
 
 Q8). How to update the state, in the parent component from the child component.
 
-Q9). What is props ? What is props drilling ? can we modify props ?
+Q9). What is props ? What is props drilling ? can we modify props ? <br> To overcome props drilling we use contextAPI/ redux
 
 Q10). How do you overcome from props drilling ?
 
@@ -25,6 +25,8 @@ Q12). How do you load a file into your application? <br>
  In frontend -> using ES6 module loader <br>
  In backend -> we are using common JS module loader
 
+
+Q13). How to update  the state in the parent component from child component ?
 
 # Questions:
 
