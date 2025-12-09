@@ -203,3 +203,14 @@ Because your project contains:
 #### Check :
  
               git config --global user.name
+
+
+
+-  components are reusable pieces of UI.
+
+## Note: 
+The **object?.property** syntax in JavaScript is called the Optional chaining operator.
+ <br>
+
+It allows you to safely access properties and methods of an object without explicitly checking if each reference in the chain is **null or undefined**. <br>
+If any part of the chain before the **?.** is null or undefined, the entire expression evaluates to **undefined** instead of throwing a TypeError.
