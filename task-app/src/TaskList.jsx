@@ -44,8 +44,8 @@ export default function TaskList({tasks, removeTask}){
             <ul>
                 {tasks.map((ele) => {
                     return (
-                      <li key={ele.id}>{ele.title} 
-                      <button onClick={() => handleRemove(ele.id)}>remove</button>
+                      <li key={ele._id}>{ele.title} 
+                      <button onClick={() => handleRemove(ele._id)}>remove</button>
                     </li>
                     );
                 })}
