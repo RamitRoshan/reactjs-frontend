@@ -3,6 +3,7 @@ import './App.css'
 import TaskForm from './TaskForm';
 import TaskList from './TaskList';
 import axios from 'axios';
+import RegisterForm from './RegisterForm';
 
 
 function App() {  
@@ -45,6 +46,7 @@ function App() {
          <TaskList tasks={tasks} removeTask={removeTask}/>
          <TaskForm addTask={addTask}/>
       </div>
+      <RegisterForm/>
     </>
   )
 }

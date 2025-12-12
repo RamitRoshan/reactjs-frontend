@@ -95,12 +95,13 @@ export default function TaskForm(props){  //TaskForm ({addTask}) . we can add Ta
                     <textarea 
                       placeholder="enter description"
                       value={description}
-                      onChange={e => setDescription(e.target.value)}>
+                      onChange={e => setDescription(e.target.value)}
                       onBlur = {() => {
                         if(description.trim().length === 0){
                             setClientErrors({...clientErrors, description: "description is required"});
                         }
-                      }}  
+                      }}
+                      >
                     </textarea>
                     {clientErrors.description && <span style={{ color: 'red'}}>{clientErrors.description}</span>}
                 </div>
