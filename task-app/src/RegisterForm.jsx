@@ -12,6 +12,10 @@ export default function RegisterForm(){
         confirmPassword: ""
     });
 
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const passwordRegex =
+    /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+
     return (
         
         <div>
@@ -27,7 +31,11 @@ export default function RegisterForm(){
                       onBlur={() => {       
                         if(email.trim().length === 0){
                             setErrors({ ...errors, email: "Email is required" });
-                        }  
+                        }else if ( !emailRegex.test(email)){
+                            setErrors({ ...errors, email: "Invalid email format" });
+                        }else{
+                            setErrors({ ...errors, email: "" });
+                        }
                       }}
 
                     />
@@ -47,9 +55,15 @@ export default function RegisterForm(){
                 
                         if(password.trim().length === 0){
                             setErrors({ ...errors, password: "Password is required" });
-                        }  
-                        if(confirmPassword && password !== confirmPassword){
+                            
+                        } else if(!passwordRegex.test(password)){
+                            setErrors({...errors, password:"Password must contain 1 uppercase, 1 lowercase, 1 number, 1 special character & minimum 8 characters"})
+                        }
+                        else if(confirmPassword && password !== confirmPassword){
                             setErrors({...errors, confirmPassword: "Password doesnot match"})
+                        }
+                        else{
+                            setErrors({ ...errors, password: "" });
                         }
                       }}
 
@@ -90,19 +104,5 @@ export default function RegisterForm(){
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
  
+
