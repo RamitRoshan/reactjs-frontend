@@ -8,6 +8,11 @@ export default function TaskForm(props){  //TaskForm ({addTask}) . we can add Ta
     // eslint-disable-next-line no-unused-vars
     const [serverError, setServerError]  = useState(null);
     const [clientErrors, setClientErrors] = useState({});
+
+    // const [clientErrors, setClientErrors] = useState({
+    //     title: '',
+    //     description: ''
+    // });
     
 
     const handleSubmit = (e) => {
@@ -71,6 +76,16 @@ export default function TaskForm(props){  //TaskForm ({addTask}) . we can add Ta
                       placeholder="Enter title"
                       value={title}
                       onChange={e => setTitle(e.target.value)}
+
+                      onBlur={() => {
+                        console.log('user came out of input field');
+                        //check if the title is empty, if so then update the clientErrors
+                        //client side validations
+                        if(title.trim().length === 0){
+                            setClientErrors({...clientErrors, title: "title is required"});
+                        }  
+                      }}
+
                     />
                     {/* object.props is undefined i.e false and false && other is false
                     i.e if clientError.tile is truthy then print print clientError in red color */}
@@ -81,6 +96,11 @@ export default function TaskForm(props){  //TaskForm ({addTask}) . we can add Ta
                       placeholder="enter description"
                       value={description}
                       onChange={e => setDescription(e.target.value)}>
+                      onBlur = {() => {
+                        if(description.trim().length === 0){
+                            setClientErrors({...clientErrors, description: "description is required"});
+                        }
+                      }}  
                     </textarea>
                     {clientErrors.description && <span style={{ color: 'red'}}>{clientErrors.description}</span>}
                 </div>
