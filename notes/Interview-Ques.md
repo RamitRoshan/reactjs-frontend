@@ -29,6 +29,9 @@ Q12). How do you load a file into your application? <br>
 Q13). How to update  the state in the parent component from child component ?
 
 - React is passong data in one way i.e from parent component  -> child component. but to pass from child component -> parent component we have to create data in parent component 1st then we can inherit it to child component.
+
+
+Q14). How to optimize performance in reactjs ?
 # Questions:
 
 ```
