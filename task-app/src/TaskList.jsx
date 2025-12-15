@@ -77,7 +77,8 @@ export default function TaskList({tasks, removeTask, updateTask}){
                         onChange={() => {
                             handleStatusChange(ele);
                         }}/>
-                        {/* using conditional rendering and return strike for completion */}
+                        {/* using conditional rendering and return strike for completion.
+                        The text will be displayed with a line through it. */}
                         {ele.status == "completed" ? <s>{ele.title}</s> : ele.title} 
                       <button onClick={() => { 
                         handleRemove(ele._id)
