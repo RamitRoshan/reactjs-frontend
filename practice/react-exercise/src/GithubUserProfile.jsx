@@ -23,7 +23,7 @@ export default function GithubUserProfile(){
 
     const handleSubmit = (e) => {
         // to avoid multiple re rendering we use local variable(formErrors) otherwise we can use
-        //setErrors
+        //setErrors. It is a temporary local object We use it to collect all validation errors
         const formErrors = {};
 
         e.preventDefault();
@@ -32,12 +32,18 @@ export default function GithubUserProfile(){
             formErrors.userName = "username is required";
         }
 
+        /* Check errors; if present, update error state and exit function i.e I 
+        ,use a local formErrors object to collect validation errors. If any error exists, I update the error state and return early to prevent the API call. */
         if (Object.keys(formErrors).length > 0) {
            setErrors(formErrors);
            return;
         }
-        //clear errors and trigger api calls
+        //clear errors -> Remove old validation errors
+        /*Clear old error messages once validation passes. What happens without it ❌
+        Previous error like "username is required" will still show even after user enters a valid username. */
         setErrors({});
+
+        //trigger api calls. update searchUser to trigger the API call through useEffect.
         setSearchUser(userName);
     };
 
@@ -94,6 +100,7 @@ export default function GithubUserProfile(){
               <div>
                 <h3>{userData.name}</h3>
                 <img src={userData.avatar_url} alt="avatar" width="120" />
+                {/* GitHub API uses login as the username field, not username. That’s why I accessed userData.login.” */}
                 <p>Username: {userData.login}</p>
               </div>
             )}
