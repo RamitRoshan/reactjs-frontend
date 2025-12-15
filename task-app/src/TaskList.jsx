@@ -27,7 +27,7 @@
 
 
 import axios from "axios";
-export default function TaskList({tasks, removeTask}){
+export default function TaskList({tasks, removeTask, updateTask}){
 
 
     const handleRemove = (id) => {
@@ -44,6 +44,27 @@ export default function TaskList({tasks, removeTask}){
         }
     }
 
+    // status changes
+    const handleStatusChange = (task) => {
+        // console.log('change status for', id);
+
+        const formData = {
+            title: task.title,
+            description: task.description,
+            //if-else
+            status: task.status === "pending" ? "completed" : "pending"
+        };
+        axios.put(`http://localhost:7070/api/tasks/${task._id}`, formData)
+             .then((response) => {
+                console.log(response.data);
+                const data = response.data;
+                updateTask(data.task);
+             })
+             .catch((err) => {
+                console.log(err);
+             });
+    }
+
    
     return(
         <div>
@@ -51,8 +72,16 @@ export default function TaskList({tasks, removeTask}){
             <ul>
                 {tasks.map((ele) => {
                     return (
-                      <li key={ele._id}>{ele.title} 
-                      <button onClick={() => handleRemove(ele._id)}>remove</button>
+                      <li key={ele._id}>
+                        <input type="checkbox" checked={ele.status == "completed"}
+                        onChange={() => {
+                            handleStatusChange(ele);
+                        }}/>
+                        {/* using conditional rendering and return strike for completion */}
+                        {ele.status == "completed" ? <s>{ele.title}</s> : ele.title} 
+                      <button onClick={() => { 
+                        handleRemove(ele._id)
+                      }}>remove</button>
                     </li>
                     );
                 })}

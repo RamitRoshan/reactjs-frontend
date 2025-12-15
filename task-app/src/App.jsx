@@ -28,14 +28,38 @@ function App() {
   }, []);
 
   const addTask = (taskObj) => {  //handler fn / call back
-    setTasks([...tasks, taskObj]);
+    // setTasks([...tasks, taskObj]); //updated fn (newStateValue)
+    setTasks(prevState => [...prevState, taskObj]); //updateFnc((prevState) => {return newStateValue})
+
+    /*
+    setTasks((prevState) => {
+      return [...prevState, taskObj];
+    })
+    */
   }
 
   const removeTask =(id) => {
-    const result = tasks.filter((ele) => {
-      return ele._id != id;
-    });
-    setTasks(result);
+    // const result = tasks.filter((ele) => {
+    //   return ele._id != id;
+    // });
+    // setTasks(result);
+
+    //another ways for doing same above logic
+    setTasks((prevState) => {
+      return prevState.filter(ele => ele._id != id);
+    })
+  }
+
+  const updateTask = (task) => {
+    setTasks((prevState) => {
+      return prevState.map(ele => {
+        if(ele._id == task._id){
+          return task;
+        }else{
+          return ele;
+        }
+      })
+    })
   }
 
   return (
@@ -43,7 +67,7 @@ function App() {
       <div>
         <h1>Task App</h1>
         <h2>Listing Tasks - {tasks.length}</h2>
-         <TaskList tasks={tasks} removeTask={removeTask}/>
+         <TaskList tasks={tasks} removeTask={removeTask} updateTask={updateTask}/>
          <TaskForm addTask={addTask}/>
       </div>
       <RegisterForm/>
