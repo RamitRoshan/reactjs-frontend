@@ -1,8 +1,9 @@
 import './App.css'
 import CountrySelector from './CountrySelector'
-import GithubUserProfile from "./GithubUserProfile"
+import GithubUserProfile from './GithubUserProfile'
+
 function App() {
- 
+   
 
   return (
     <>
@@ -14,5 +15,6 @@ function App() {
     </>
   )
 }
+
 
 export default App
