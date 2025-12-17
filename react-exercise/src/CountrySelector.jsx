@@ -4,7 +4,11 @@ export default function CountrySelector(){
         <div>
             <h2>Country Selector</h2>
             <form>
-                <div></div>
+                <div>
+                    <select>
+                        
+                    </select>
+                </div>
             </form>
         </div>
     );
