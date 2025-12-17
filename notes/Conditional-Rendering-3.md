@@ -1,4 +1,43 @@
-# CONDITIONAL RENDERING in REACT
+# Conditional Rendering (React)
+
+## Definition
+Conditional rendering in React means showing or hiding UI elements based on a condition (state or props).
+
+---
+
+## 1. Logical AND (`&&`)
+Renders the element only when the condition(both) is true.
+
+      {isLoggedIn && <h1>Welcome</h1>}
+
+## 2. Ternary Operator (? :)
+Used when one of two elements must be rendered.
+
+        {isLoggedIn ? <h1>Welcome</h1> : <h1>Please Login</h1>}
+
+
+## 3. If Statement
+Used when rendering logic is complex(bigger).
+
+        if (loading) {
+          return <p>Loading...</p>;
+        }
+
+## 4. Function-based Rendering
+Encapsulates conditional logic inside a function.
+
+        const renderMessage = () => {
+            return count > 0 ? "Positive" : "Zero";
+        };
+
+## 5. Rendering Nothing (null)
+Returns nothing when condition is false.
+
+        {error && <p>{error}</p>}
+
+<br>
+
+**=>** 
 
 1. If you wants to manage if-else statement or If you wants to manage "if" statement.
 
@@ -83,3 +122,21 @@ ans:  thead and tbody <br>
 - thead has one children that is : tr(t-row).
 
 - children of the tbody will be passed on the length of the array
+
+
+### ⚠ Common mistake
+
+❌
+     
+     if (isLoggedIn) {
+        <h1>Welcome</h1>;
+      }
+
+✅
+ 
+      if (isLoggedIn) {
+         return <h1>Welcome</h1>;
+      }
+
+
+## Note: Conditional rendering is used to control UI output based on state or props.
