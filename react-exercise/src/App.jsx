@@ -16,10 +16,10 @@ function App() {
 
     <UserDetails/> */}
 
-    <MovieSearch/>
-
-    <CityWeather/>
-    {/* <CountrySelector/> */}
+    {/* <MovieSearch/> */}
+{/* 
+    <CityWeather/> */}
+    <CountrySelector/>
     </>
   )
 }
