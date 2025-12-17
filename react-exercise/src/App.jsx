@@ -1,4 +1,5 @@
 import './App.css'
+import CityWeather from './CityWeather'
 import CountrySelector from './CountrySelector'
 import GithubUserProfile from './GithubUserProfile'
 import MovieSearch from './MovieSearch'
@@ -11,12 +12,13 @@ function App() {
     <>
     <h1><b>React Assignment</b> </h1> 
     <br/>
-    <GithubUserProfile/>
+    {/* <GithubUserProfile/>
 
-    <UserDetails/>
+    <UserDetails/> */}
 
     <MovieSearch/>
-    
+
+    <CityWeather/>
     {/* <CountrySelector/> */}
     </>
   )
