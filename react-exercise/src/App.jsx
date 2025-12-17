@@ -1,6 +1,7 @@
 import './App.css'
 import CountrySelector from './CountrySelector'
 import GithubUserProfile from './GithubUserProfile'
+import MovieSearch from './MovieSearch'
 import UserDetails from './UserDetails'
 
 function App() {
@@ -13,6 +14,9 @@ function App() {
     <GithubUserProfile/>
 
     <UserDetails/>
+
+    <MovieSearch/>
+    
     {/* <CountrySelector/> */}
     </>
   )
