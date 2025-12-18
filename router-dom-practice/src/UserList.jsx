@@ -33,6 +33,7 @@ export default function UserList() {
       {serverError && <p style={{ color: "red" }}>{serverError}</p>}
 
       <ul>
+        {/* here in the map we use (), if we use {} then we have to write return <li></li> */}
         {users.map((user) => (
           <li key={user.id}>
             {user.name}
