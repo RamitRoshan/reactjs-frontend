@@ -1,5 +1,5 @@
 function removeItem(arr, item) {
-    const result = arr.filter((ele) => ele !== item);
+    const result = arr.filter(ele => ele !== item);
     return result;
 }
 const items = ["apple", "mango", "onion"];
