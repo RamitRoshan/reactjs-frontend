@@ -1,3 +1,62 @@
+// // using use Reducer
+// import { useEffect, useReducer } from 'react'
+// import './App.css'
+// import TaskForm from './TaskForm';
+// import TaskList from './TaskList';
+// import axios from 'axios';
+// import RegisterForm from './RegisterForm';
+// import reducer from './reducer';
+
+
+// function App() {  
+
+//   const [tasks, dispatch] = useReducer(reducer, []);
+//   console.log(tasks);
+
+
+//   //after the app component has finished mounting, display console.log("component mounted")
+//   //fetching data + printing it from backend 
+//   useEffect(() => {
+//     console.log("app component mounted");
+//     axios.get('http://localhost:7070/api/tasks/')
+//          .then((response) => {
+//             console.log(response.data);
+//             const data = response.data;
+//             dispatch({type: "fetch_tasks", payload: data});
+//          })
+//          .catch((err) => {
+//            console.log(err);
+//          })
+
+//   }, []);
+
+ 
+ 
+
+//   return (
+//     <>
+//       <div>
+//         <h1>Task App</h1>
+//         <h2>Listing Tasks - {tasks.length}</h2>
+//          <TaskList tasks={tasks} dispatch={dispatch}/>
+//          <TaskForm dispatch={dispatch}/>
+//       </div>
+//       <RegisterForm/>
+//     </>
+//   )
+// }
+
+// export default App
+
+
+
+
+
+
+
+
+//using use State
+
 import { useEffect, useState } from 'react'
 import './App.css'
 import TaskForm from './TaskForm';

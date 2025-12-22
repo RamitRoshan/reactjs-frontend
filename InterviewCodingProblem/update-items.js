@@ -10,4 +10,4 @@ function updateItem(arr, item) {
 }
 const items = ["apple", "mango", "onion"];
 console.log(updateItem(items, "mango"));  // ["apple", "MANGO", "onion"];
-console.log(items);  // [ 'apple', 'mango', 'onion' ]
+console.log(items);  // [ "apple", "mango", "onion"]

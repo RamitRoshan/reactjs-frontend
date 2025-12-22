@@ -6,12 +6,15 @@ import Services from "./Services"
 import Login from "./Login"
 import UserList from './UserList'
 import {Link, Route, Routes} from "react-router-dom";
+import EmployeeeDetails from './EmployeeDetails'
+import PostList from './PostList'
+import PostShow from './PostShow'
 
 function App() {
  
 
   return (
-    <>
+    <div>
     <h1>React Router Dom</h1>
     <ul className='top-nav'>
       <li>
@@ -32,6 +35,12 @@ function App() {
       <li>
         <Link to="/userlist">view users</Link>
       </li>
+      <li>
+        <Link to="/employeedetails">Employees</Link>
+      </li>
+      <li>
+        <Link to="/postlist">PostList</Link>
+      </li>
     </ul>
  
 
@@ -42,9 +51,13 @@ function App() {
       <Route path="/contact" element={<Contact />} />
       <Route path="/login" element={<Login />} />
       <Route path="/userlist" element={<UserList />} />
+
+      <Route path="/employeedetails/:id" element={<EmployeeeDetails/>}/>
+      <Route path="/postlist" element={<PostList/>}/>
+      <Route path="/posts/:id" element={<PostShow/>}/>
     </Routes>
   
-    </>
+    </div>
   )
 }
 

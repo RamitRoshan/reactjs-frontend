@@ -1,5 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 export default function UserList() {
 
@@ -32,11 +33,20 @@ export default function UserList() {
 
       {serverError && <p style={{ color: "red" }}>{serverError}</p>}
 
-      <ul>
-        {/* here in the map we use (), if we use {} then we have to write return <li></li> */}
+      {/* here in the map we use (), if we use {} then we have to write return <li></li> */}
+      {/* <ul>
         {users.map((user) => (
           <li key={user.id}>
             {user.name}
+          </li>
+        ))}
+      </ul> */}
+
+      {/* Implementing routes  */}
+      <ul>
+        {users.map((user) => (
+          <li key={user.id}>
+            <Link to={`/employeedetails/${user.id}`}>{user.name}</Link>
           </li>
         ))}
       </ul>

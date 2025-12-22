@@ -7,6 +7,7 @@ export default function TaskForm(props){  //TaskForm ({addTask}) . we can add Ta
     const [description, setDescription] = useState("");
     // eslint-disable-next-line no-unused-vars
     const [serverError, setServerError]  = useState(null);
+
     const [clientErrors, setClientErrors] = useState({});
 
     // const [clientErrors, setClientErrors] = useState({
@@ -51,7 +52,12 @@ export default function TaskForm(props){  //TaskForm ({addTask}) . we can add Ta
              .then((response) => {
                 console.log(response.data);
                 const data = response.data;
+
+                //writing this for useReducer hoooks
+                // props.dispatch({type:"add_task", payload: data});
+
                 props.addTask(data);
+
                 setTitle('');
                 setDescription('');
                 setServerError(null);

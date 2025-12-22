@@ -1,23 +1,10 @@
-
-// export default function EmployeeDetails() {
-    //when there is  no data available then we use null
-
-//     return (
-//         <div>
-//             <h3>Employee Details </h3>
-//         </div>
-//     );
-// }
-
-
+import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import axios from "axios";
 
-export default function EmployeeDetails() {
-  const { id } = useParams();
+export default function EmployeeeDetails(){
 
-  //when there is  no data available then we use null
+  const {id} = useParams();
   const [user, setUser] = useState(null);
 
   useEffect(() => {
@@ -31,15 +18,15 @@ export default function EmployeeDetails() {
         console.log(err.message);
       });
 
-    return () => {
-      console.log("component unmounted");
-    };
-  }, [id]); //when id updated then it do rerender
+      //using return under useEffect for cleanup (rerender)
+      return () => {
+        console.log("Component unmounted");
+      };
+  }, [id]);  //when id updated then it will do re-render.
 
   return (
     <div>
-      <h3>Employee Details - {id}</h3>
-
+      <h3>Employee Details - {id} </h3>
       {user && (
         <div>
           <p>Name: {user.name}</p>
@@ -50,6 +37,9 @@ export default function EmployeeDetails() {
     </div>
   );
 }
+
+
+ 
 
 
 
