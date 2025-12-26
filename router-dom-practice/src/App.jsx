@@ -9,7 +9,6 @@ import {Link, Route, Routes} from "react-router-dom";
 import EmployeeeDetails from './EmployeeDetails'
 import PostList from './PostList'
 import PostShow from './PostShow'
-import UseReducerExample from './UseReducerExample'
 
 function App() {
  
@@ -58,9 +57,6 @@ function App() {
       <Route path="/posts/:id" element={<PostShow/>}/>
     </Routes>
 
-
-    {/* out of league -> here we are using useReducer hooks */}
-    <UseReducerExample/>
   
     </div>
   )
