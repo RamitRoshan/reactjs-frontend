@@ -40,3 +40,9 @@
 .read-the-docs {
   color: #888;
 }
+
+.top-nav li {
+  list-style: none;
+  display: inline;
+  margin-right: 10px;
+}
