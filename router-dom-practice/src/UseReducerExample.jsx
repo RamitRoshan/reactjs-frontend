@@ -16,6 +16,25 @@ function reducer(state, action){
     }else{
         return state;
     }
+
+//     switch (action.type) {
+//     case "increment": {
+//       return state + 1;
+//     }
+//     case "decrement": {
+//       return state - 1;
+//     }
+//     case "reset": {
+//       return 0;
+//     }
+//     case "inc_by": {
+//       return state + action.payload;
+//     }
+//     default: {
+//       return state;
+//     }
+//   }
+
 }
 export default function UseReducerExample(){
 

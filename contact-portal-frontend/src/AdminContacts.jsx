@@ -2,12 +2,15 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { useLocation, useNavigate } from "react-router-dom";
 
-// navigate is from react-router-dom and allows us to change routes without refreshing the page.
-/* useLocation is from react-router-dom and allows us to access the current route's info, 
+// navigate is from react-router-dom and it allows us to change routes without refreshing the page.
+
+/* useLocation is from react-router-dom and it allows us to access the current route's info, 
 including state, pathname, and query parameters. */
 
 export default function AdminContacts() {
+
   const [contacts, setContacts] = useState([]);
+  
   const navigate = useNavigate(); //sends/redirects the user to another route/page
   const location = useLocation(); //reads information about the current route, including: state, pathname, search
 
