@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Local Storage Topic</title>
+</head>
+<body>
+    <h2>Local Storage</h2>
+    <script>
+        //store mysore information in a variable called as city
+        localStorage.setItem('city', 'mysore');
+        localStorage.setItem('population', 100000); // will still be stored as string '100000'
+        //persist page reload or when browser closed and opened
+
+        //read the key
+        console.log(localStorage.getItem('city'));
+
+        //I.Q). how to store an object in localstorage ? 
+        const person = {
+            name: 'arun',
+            email: 'arun@gmail.com'
+        };
+        //by default person.toString() -> [object, object]
+        // while storing JSON.stringify()  [used to convert object to string]
+        localStorage.setItem('person', JSON.stringify(person));
+
+        //while reading JSON.parse()
+        console.log('name: ', JSON.parse(localStorage.getItem('person')).name);
+        console.log('email: ', JSON.parse(localStorage.getItem('person')).email);
+    </script>
+</body>
+</html>
