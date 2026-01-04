@@ -20,12 +20,12 @@ We need to create one object called profile which will contain name and email.
 Then we store this object in localStorage using JSON.stringify() because localStorage only stores strings.
 When the page reloads, we get the data back using JSON.parse() and then show name and email on the UI.
 
+
 => In key we want to have profile, and in value we want to store an object.
 This means:
 key   → "profile"
 value → { name: "Ramit", email: "ramit123@gmail.com" }
 But localStorage stores ONLY STRINGS, so we must convert the object.
-
 */
 
 import { useEffect, useState } from "react";
