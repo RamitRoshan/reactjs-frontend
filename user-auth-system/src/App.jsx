@@ -8,25 +8,35 @@ import { AuthContext } from './context/Auth';
 
 function App() {
 
-  const { isLoggedIn, user, dispatch} = useContext(AuthContext);
+  const { isLoggedIn, user, dispatch, handleLogout} = useContext(AuthContext);
   return (
-    <div>
+    <div className='App'>
       <h1>User Authentication System</h1>
 
       <nav>
         <ul>
-          <li>
-            <Link to="/login">Login</Link>
-          </li>
-          <li>
-            <Link to="/dashboard">Dashboard</Link>
-          </li>
-          <li>
-            <Link to="/profile">Profile</Link>
-          </li>
-          <li>
-            <button>Logout</button>
-          </li>
+          {/* conditional rendering: if loggedin is true the display this else display these(login) */}
+          { isLoggedIn ? (
+            <>
+              <li>
+                <Link to="/dashboard">Dashboard</Link>
+              </li>
+              <li>
+                <Link to="/profile">Profile</Link>
+              </li>
+              <li>
+                <button onClick = {handleLogout}>Logout</button>
+              </li>
+            </>
+          ) : (
+            <>
+              <li>
+                <Link to="/login">Login</Link>
+              </li>
+            </>
+          )}
+         
+           
         </ul>
       </nav>
 

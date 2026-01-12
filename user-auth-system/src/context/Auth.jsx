@@ -27,8 +27,14 @@ export function AuthProvider(props) {
         dispatch ({type: 'LOGIN', payload: user})
         navigate("/dashboard");
     };
+
+    const handleLogout = () => {
+        dispatch({type: 'LOGOUT'})
+        //once user do logout then it navigate to login
+        navigate('/login')
+    }
     return (
-        <AuthContext.Provider value={{...state, dispatch, handleLogin}}>
+        <AuthContext.Provider value={{...state, dispatch, handleLogin, handleLogout}}>
             {props.children}
         </AuthContext.Provider>
     );
