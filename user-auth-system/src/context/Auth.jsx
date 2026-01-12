@@ -28,12 +28,15 @@ export function AuthProvider(props) {
     //call back fn should called once after the initial renders
     useEffect(() => {
         const id = localStorage.getItem('id'); //getItem -> read the value from local storage
-        //if id is present (if id is present in loccal storage)
+
+        //if id is present (if id is present in loccal storage) -edge cases
         if(id){
             const user = users.find(ele => ele.id === Number(id))
             dispatch({type: 'LOGIN', payload: user}) //indicates user is loggedIn and payload is for user information
         }
     }, []);
+
+
     const handleLogin = (user) => {
         dispatch ({type: 'LOGIN', payload: user})
         //once user loggedIn then when user do refresh then it should still be logggedIN
