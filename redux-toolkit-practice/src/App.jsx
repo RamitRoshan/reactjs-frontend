@@ -1,11 +1,14 @@
 import './App.css'
+import Counter from './Counter'
+import ShowName from './ShowName'
 
 function App() {
  
 
   return (
     <>
-      <h2>Redux</h2>
+      <Counter/>
+      <ShowName/>
     </>
   )
 }
