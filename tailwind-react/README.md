@@ -59,6 +59,38 @@ It is **highly customizable**, **mobile-first**, and ideal for rapid development
 
 ---
 
+## **Installation process:**
+
+1. Install Tailwind CSS 
+
+```
+npm install tailwindcss @tailwindcss/vite
+```
+2. come to `vite.config.js`
+
+- here Import `@tailwindcss/vite` and `tailwindcss` in the plugins.
+
+```
+import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react'
+import tailwindcss from '@tailwindcss/vite'
+
+// https://vite.dev/config/
+export default defineConfig({
+  plugins: [react(), tailwindcss()],
+})
+
+```
+
+3. Go to `index.css` file
+- import the tailwind css inside this files 
+
+```
+@import "tailwindcss";
+```
+
+
+---
 ## 📂 Folder Structure
 
 ```
