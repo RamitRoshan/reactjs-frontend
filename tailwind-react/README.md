@@ -57,7 +57,53 @@ It is **highly customizable**, **mobile-first**, and ideal for rapid development
      </div>
      ```
 
+7. **grid and flex set the display type**
+
+   - grid → display: grid
+   - flex → display: flex
+
+   - Utilities like:
+
+      - grid-cols-2
+      - gap-4
+      - justify-between
+      - items-center
+  
+   **only work if the element is already grid or flex**
+
+   - Without grid or flex, the element stays display: block, so layout utilities are ignored.
+
+> First tell the browser how to layout (grid / flex), then tell it what to do (cols, gap, align)
+
+<br>
+
+>Tailwind layout utilities depend on display: grid or display: flex, so we must enable the layout first.
+
+<br>
+
+**❌ Wrong**
+       
+      
+        <div className="grid-cols-2">
+
+      
+**✅ Right**
+        
+        <div className="grid grid-cols-2">
+
 ---
+
+
+## To implement dark mode - go to `index.css`
+- It will do dark, where-ever we use this
+  
+```
+@custom-variant dark (&:where(.dark, .dark *));
+```
+
+
+<br>
+
 
 ## **Installation process:**
 
