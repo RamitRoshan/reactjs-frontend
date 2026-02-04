@@ -1,16 +1,89 @@
-# React + Vite
+# Tailwind React Practice
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## 🚀 Project Overview
+This project is a **practice workspace for Tailwind CSS** integrated with **React**.  
+The goal of this project is to build **responsive, modern, and reusable UI components** using Tailwind CSS in a React environment.  
 
-Currently, two official plugins are available:
+It demonstrates my ability to:
+- Build **component-based UIs** with React
+- Apply **Tailwind CSS utility classes** efficiently
+- Create **mobile-first and responsive designs**
+- Structure projects in a clean and professional manner
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## React Compiler
+## 🎨 Technologies Used
+- **React** - JavaScript library for building interactive UIs
+- **Tailwind CSS** - Utility-first CSS framework for rapid styling
+- **Vite** - Fast development build tool
+- **PostCSS & Autoprefixer** - For Tailwind CSS compilation
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+## 📐 Tailwind CSS Theory & Usage
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Tailwind CSS is a **utility-first CSS framework** where you use pre-defined classes instead of writing custom CSS.  
+It is **highly customizable**, **mobile-first**, and ideal for rapid development.
+
+### Key Concepts
+1. **Utility Classes** – Small, single-purpose classes like:
+   - `bg-blue-500` → background color
+   - `text-xl` → font size
+   - `p-4` → padding
+   - `m-2` → margin
+2. **Responsive Design** – Tailwind uses **breakpoint prefixes**:
+   - `sm:` → Small devices (≥640px)
+   - `md:` → Medium devices (≥768px)
+   - `lg:` → Large devices (≥1024px)
+   - `xl:` → Extra large devices (≥1280px)
+   - Example:
+     ```html
+     <div class="text-sm md:text-lg lg:text-xl">
+       Responsive Text
+     </div>
+     ```
+3. **Flexbox & Grid Utilities**
+   - Flex: `flex`, `flex-col`, `items-center`, `justify-between`
+   - Grid: `grid`, `grid-cols-3`, `gap-4`
+4. **Hover, Focus, & State Variants**
+   - Example: `hover:bg-blue-700` or `focus:ring-2`
+5. **Dark Mode**
+   - Example: `dark:bg-gray-800 dark:text-white`
+6. **Mobile-First Approach**
+   - Tailwind applies **default styles to mobile devices**, then overrides for larger screens:
+     ```html
+     <div class="bg-white p-4 sm:bg-gray-100 md:bg-gray-200 lg:bg-gray-300">
+       Responsive Box
+     </div>
+     ```
+
+---
+
+## 📂 Folder Structure
+
+```
+tailwind-react/
+├─ public/
+├─ src/
+│ ├─ components/ # Reusable React components
+│ ├─ pages/ # Page-level components
+│ ├─ App.jsx # Main React component
+│ └─ index.css # Tailwind input CSS
+├─ .gitignore
+├─ package.json
+└─ README.md
+
+```
+
+---
+
+## ⚡ Getting Started
+
+### 1. Clone the repository
+```bash
+git clone https://github.com/ramitroshan/tailwind-react.git
+cd tailwind-react
+2. Install dependencies
+npm install
+3. Start the development server
+npm run dev
