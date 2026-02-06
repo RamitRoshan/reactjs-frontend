@@ -4,7 +4,7 @@
 
 
 /* defining a theme, we can apply this to any item in the page */
-@theme {
+@theme{
     --color-background: #050030;
     --color-primary: #ebebed;
 }
