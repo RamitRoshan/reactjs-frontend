@@ -13,3 +13,10 @@ export const plusTwo = () => {
         type: 'PLUS_TWO'
     }
 }
+
+export const removeAll = () => {
+
+    return {
+        type: 'REMOVE_ALL'
+    }
+}

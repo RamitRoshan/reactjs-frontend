@@ -1,4 +1,4 @@
-import { addNumber, plusTwo } from "../../actions/numbersAction"
+import { addNumber, plusTwo, removeAll} from "../../actions/numbersAction"
 import { useDispatch } from "react-redux"
 
 const NumbersControl = () => {
@@ -24,12 +24,16 @@ const NumbersControl = () => {
     const handlePlusTwo = () => {
         dispatch(plusTwo())
     }
-    
+
+    const handleRemoveAll = () => {
+        dispatch(removeAll())
+    }
+
     return (
         <div>
             <button onClick={generateNumber}>Generate</button>
             <button onClick={handlePlusTwo}>+2</button>
-            <button>Remove All</button>
+            <button onClick={handleRemoveAll}>Remove All</button>
         </div>
     )
 }

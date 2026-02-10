@@ -17,6 +17,10 @@ const numbersReducer = (state = numbersInitialState, action) => {
             })
         }
 
+        case 'REMOVE_ALL' : {
+            return []
+        }
+
         default: {
             return [...state] //we can also do like this: [].concat(state)
         }
