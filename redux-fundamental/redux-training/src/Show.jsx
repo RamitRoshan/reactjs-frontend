@@ -1,6 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
 
+// eslint-disable-next-line no-unused-vars
 const ShowCount = (props) => {
 
     const count = useSelector((state) => {
