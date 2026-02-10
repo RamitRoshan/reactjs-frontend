@@ -3,9 +3,12 @@
 
 
 function removeItem(arr, idNum) {
+
+  //for using splice, we need findIndex.
+  // findIndex =>  return the index of the element that satisfy the condition.
   let index = arr.findIndex(obj => obj.id === idNum);
 
-  // edge case
+  // edge cases
   if (index !== -1) {
     arr.splice(index, 1);
   }
