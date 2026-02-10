@@ -10,7 +10,14 @@ const NumbersList = (props) => {
         <div>
             <ul>
                 {numbers.map((num) => {
-                    return <li key={num.id}>{num.value}</li>
+                    return (
+                        <li key={num.id}>
+                            {num.value}
+                            <button>-</button>
+                            <button>+</button>
+                            <button>*</button>
+                        </li>
+                    ) 
                 })}
             </ul>
         </div>
