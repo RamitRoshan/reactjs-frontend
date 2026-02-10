@@ -4,6 +4,7 @@ import { createRoot } from 'react-dom/client'
 import App from './App.jsx'
 import configureStore from "./store/configureStore"
 import { increment, decrement, incrementBy } from './actions/countActions'
+import {Provider} from 'react-redux'
 
 const store = configureStore();
 // console.log(store);
@@ -15,10 +16,10 @@ store.subscribe(() => {
 })
 
 
-store.dispatch(increment())
+// store.dispatch(increment())
 
 createRoot(document.getElementById('root')).render(
-  <>
+  <Provider store={store}>
     <App />
-  </>,
+  </Provider>,
 )
