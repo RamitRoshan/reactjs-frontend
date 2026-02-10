@@ -21,6 +21,18 @@ const numbersReducer = (state = numbersInitialState, action) => {
             return []
         }
 
+        case 'DECREMENT_NUMBER' : {
+            return state.map((ele) => {
+                //here only 1 ele has to be decrement
+                if(ele.id === action.payload){
+                    return {...ele, value: ele.value-1}
+
+                }else{
+                    return {...ele}
+                }
+            })
+        }
+
         default: {
             return [...state] //we can also do like this: [].concat(state)
         }

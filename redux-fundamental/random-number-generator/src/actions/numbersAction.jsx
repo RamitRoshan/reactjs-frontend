@@ -20,3 +20,10 @@ export const removeAll = () => {
         type: 'REMOVE_ALL'
     }
 }
+
+export const decrementNumber = (id) => {
+    return {
+        type: 'DECREMENT_NUMBER',
+        payload: id
+    }
+}
