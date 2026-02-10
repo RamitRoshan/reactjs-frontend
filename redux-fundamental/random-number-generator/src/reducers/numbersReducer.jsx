@@ -33,6 +33,22 @@ const numbersReducer = (state = numbersInitialState, action) => {
             })
         }
 
+        case 'INCREMENT_NUMBER' : {
+            return state.map((ele) => {
+                if(ele.id === action.payload){
+                    return {...ele, value: ele.value+1}
+                }else{
+                    return {...ele}
+                }
+            })
+        }
+
+        case 'REMOVE_NUMBER' : {
+            return state.filter((ele) => {
+                return ele.id != action.payload
+            })
+        }
+
         default: {
             return [...state] //we can also do like this: [].concat(state)
         }

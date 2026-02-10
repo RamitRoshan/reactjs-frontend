@@ -1,5 +1,5 @@
 import { useSelector, useDispatch } from "react-redux";
-import { decrementNumber } from "../../actions/numbersAction";
+import { decrementNumber, incrementNumber, removeNumber } from "../../actions/numbersAction";
 
 // eslint-disable-next-line no-unused-vars
 const NumbersList = (props) => {
@@ -13,6 +13,16 @@ const NumbersList = (props) => {
     const handleDecrement = (id) => {
         dispatch(decrementNumber(id));
     }
+
+    const handleIncrement = (id) => {
+        dispatch(incrementNumber(id));
+    }
+
+    const handleRemove = (id) => {
+        dispatch(removeNumber(id));
+    }
+
+
     return (
         <div>
             <ul>
@@ -23,8 +33,12 @@ const NumbersList = (props) => {
                             <button onClick={() => {
                                 handleDecrement(num.id)
                             }}>-</button>
-                            <button>+</button>
-                            <button>*</button>
+                            <button onClick={() => {
+                                handleIncrement(num.id)
+                            }}>+</button>
+                            <button onClick={() => {
+                                handleRemove(num.id)
+                            }}>x</button>
                         </li>
                     ) 
                 })}

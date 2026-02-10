@@ -27,3 +27,19 @@ export const decrementNumber = (id) => {
         payload: id
     }
 }
+
+
+export const incrementNumber = (id) => {
+    return {
+        type: 'INCREMENT_NUMBER',
+        payload: id
+    }
+}
+
+
+export const removeNumber = (id) => {
+    return {
+        type: 'REMOVE_NUMBER',
+        payload: id
+    }
+}
