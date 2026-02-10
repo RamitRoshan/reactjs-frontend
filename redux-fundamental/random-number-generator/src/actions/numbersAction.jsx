@@ -5,3 +5,11 @@ export const addNumber = (randomNum) => {
         payload: randomNum
     }
 }
+
+
+export const plusTwo = () => {
+
+    return {
+        type: 'PLUS_TWO'
+    }
+}

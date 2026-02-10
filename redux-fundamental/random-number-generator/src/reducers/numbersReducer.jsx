@@ -8,6 +8,15 @@ const numbersReducer = (state = numbersInitialState, action) => {
             return [...state, {...action.payload}]
         }
 
+        case 'PLUS_TWO' : {
+            return state.map((num) => {
+                return {
+                    ...num,
+                    value: num.value + 2
+                }
+            })
+        }
+
         default: {
             return [...state] //we can also do like this: [].concat(state)
         }
