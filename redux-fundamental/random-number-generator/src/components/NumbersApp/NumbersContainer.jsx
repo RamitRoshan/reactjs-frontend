@@ -1,6 +1,7 @@
 import { useSelector } from "react-redux";
 import NumbersControl from "./NumbersControl";
 import NumbersList from "./NumbersList";
+import AddNumber from "./AddNumber";
 
 // eslint-disable-next-line no-unused-vars
 const NumbersContainer = (props) => {
@@ -24,6 +25,7 @@ const NumbersContainer = (props) => {
 
             <NumbersList/>
             <NumbersControl/>
+            <AddNumber/>
         </div>
     )
 }
