@@ -1,5 +1,7 @@
 import { useState } from "react";
 import Joi from "joi";
+import axios from "axios";
+
 
 export default function Register() {
   const [form, setForm] = useState({
@@ -25,31 +27,59 @@ export default function Register() {
     }),
   });
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
 
-    // Validate form data using Joi schema
-   // abortEarly: false -> show all validation errors (not just first one)
-    const { error } = schema.validate(form, { abortEarly: false });
+  //   // Validate form data using Joi schema
+  //  // abortEarly: false -> show all validation errors (not just first one)
+  //   const { error } = schema.validate(form, { abortEarly: false });
 
-    if (error) {
-      // Create an object to store all validation errors
-      const errorObj = {};
-      // Loop through all Joi error details
-      error.details.forEach((err) => {
-        // err.path[0] -> field name (username/email/password)
-        // err.message -> validation error message
-        errorObj[err.path[0]] = err.message;
-      });
-      // Update state with validation errors
-      setErrors(errorObj);
-    } else {
-      // If no validation errors -> clear errors
-      setErrors({});
-      //Form is valid -> proceed (for now console log)
-      console.log("Register Details:", form);
-    }
-  };
+  //   if (error) {
+  //     // Create an object to store all validation errors
+  //     const errorObj = {};
+  //     // Loop through all Joi error details
+  //     error.details.forEach((err) => {
+  //       // err.path[0] -> field name (username/email/password)
+  //       // err.message -> validation error message
+  //       errorObj[err.path[0]] = err.message;
+  //     });
+  //     // Update state with validation errors
+  //     setErrors(errorObj);
+  //   } else {
+  //     // If no validation errors -> clear errors
+  //     setErrors({});
+  //     //Form is valid -> proceed (for now console log)
+  //     console.log("Register Details:", form);
+  //   }
+  // };
+  const handleSubmit = async (e) => {
+  e.preventDefault();
+
+  const { error } = schema.validate(form, { abortEarly: false });
+
+  if (error) {
+    const errorObj = {};
+    error.details.forEach((err) => {
+      errorObj[err.path[0]] = err.message;
+    });
+    setErrors(errorObj);
+    return;
+  }
+
+  try {
+    const response = await axios.post(
+      "http://localhost:3030/api/users/register",
+      form
+    );
+
+    alert("User Registered Successfully");
+    console.log(response.data);
+
+  } catch (err) {
+    alert(err.response?.data?.error);
+  }
+};
+
 
   return (
     <div>
