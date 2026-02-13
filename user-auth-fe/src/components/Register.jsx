@@ -52,6 +52,8 @@ export default function Register() {
   //     console.log("Register Details:", form);
   //   }
   // };
+
+
   const handleSubmit = async (e) => {
   e.preventDefault();
 
@@ -139,13 +141,7 @@ export default function Register() {
 }
 
 
-// export default function Register() {
-//   return (
-//     <div>
-//       <h3>Register Component</h3>
-//     </div>
-//   );
-// }
+
 
 /**
 Why we use this?
