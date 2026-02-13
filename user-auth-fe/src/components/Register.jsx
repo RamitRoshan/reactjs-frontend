@@ -143,15 +143,13 @@ export default function Register() {
 
 
 
-/**
-Why we use this?
+/** 
 
-schema.validate() → checks form data
+schema.validate() - checks form data
 
-abortEarly: false → collect all errors
+abortEarly: false - collect all errors
 
-error.details → contains list of all validation errors
-
-We convert that list into an object for easy display in UI
+error.details - contains list of all validation errors
+ 
  */
 
