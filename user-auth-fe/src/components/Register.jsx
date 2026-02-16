@@ -46,7 +46,7 @@ export default function Register() {
 
     setErrors({});
     
-    //Dispatch Redux Thunk
+    //Dispatch Redux-Thunk
     dispatch(registerUser(form));
   };
 
