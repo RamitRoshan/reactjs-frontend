@@ -11,6 +11,7 @@ import { fetchUser, logout } from './slices/authSlice'
 import { useDispatch, useSelector } from 'react-redux'
 import { useEffect } from 'react'
 import RestartAltIcon from '@mui/icons-material/RestartAlt';
+import Account from './components/Account'
 
 function App() { 
 
@@ -60,6 +61,7 @@ function App() {
       { !isLoggedIn && <Link to="/register">Register</Link>}
       { !isLoggedIn && <Link to="/contact">Contact</Link>}
       { !isLoggedIn &&  <Link to="/dashboard">Dashboard</Link>}
+      { !isLoggedIn && <Link to="/account">Account</Link>}
       { isLoggedIn && <Link to="/login" onClick={() => {
         localStorage.removeItem("token");
         dispatch(logout());
@@ -73,7 +75,9 @@ function App() {
         <Route path='/about' element={<About/>}/>
         <Route path='/login' element={<Login/>}/>
         <Route path='/register' element={<Register/>}/>
+        <Route path='/contact' element={<Contact/>}/>
         <Route path='/dashboard' element={<Dashboard/>}/>
+        <Route path='/account' element={<Account/>}/>
       </Routes>
     </div>
   )
