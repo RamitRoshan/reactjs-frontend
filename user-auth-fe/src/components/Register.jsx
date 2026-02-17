@@ -1,135 +1,15 @@
-// import { useState } from "react";
-// import Joi from "joi";
-// import { useDispatch, useSelector } from "react-redux";
-// import {useNavigate} from "react-router-dom"
-// import { registerUser } from "../slices/authSlice";
-
-// export default function Register() {
-//   const dispatch = useDispatch();
-//   const { loading, error } = useSelector((state) => state.auth);
-
-//   const [form, setForm] = useState({
-//     username: "",
-//     email: "",
-//     password: "",
-//   });
-
-//   const [errors, setErrors] = useState({});
-
-//   const schema = Joi.object({
-//     username: Joi.string().min(5).required().messages({
-//       "string.empty": "Username is required",
-//       "string.min": "Username must be at least 5 characters",
-//     }),
-//     email: Joi.string().email({ tlds: false }).required().messages({
-//       "string.email": "Enter valid email",
-//       "string.empty": "Email is required",
-//     }),
-//     password: Joi.string().min(6).required().messages({
-//       "string.min": "Password must be at least 6 characters",
-//       "string.empty": "Password is required",
-//     }),
-//   });
-
-//   const handleSubmit = (e) => {
-
-//     const redirect = () => {
-//       navigate('/login')
-//     }
-
-//     e.preventDefault();
-
-//     const { error } = schema.validate(form, { abortEarly: false });
-
-//     if (error) {
-//       const errorObj = {};
-//       error.details.forEach((err) => {
-//         errorObj[err.path[0]] = err.message;
-//       });
-//       setErrors(errorObj);
-//       return;
-//     }
-
-//     setErrors({});
-    
-//     //Dispatch Redux-Thunk
-//     dispatch(registerUser(form));
-//   };
-
-//   return (
-//     <div>
-//       <h3>Register Component</h3>
-
-//       <form onSubmit={handleSubmit}>
-//         <div>
-//           <input
-//             type="text"
-//             placeholder="Username"
-//             value={form.username}
-//             onChange={(e) =>
-//               setForm({ ...form, username: e.target.value })
-//             }
-//           />
-//           {errors.username && (
-//             <p style={{ color: "red" }}>{errors.username}</p>
-//           )}
-//         </div>
-
-//         <br />
-
-//         <div>
-//           <input
-//             type="email"
-//             placeholder="Email"
-//             value={form.email}
-//             onChange={(e) =>
-//               setForm({ ...form, email: e.target.value })
-//             }
-//           />
-//           {errors.email && (
-//             <p style={{ color: "red" }}>{errors.email}</p>
-//           )}
-//         </div>
-
-//         <br />
-
-//         <div>
-//           <input
-//             type="password"
-//             placeholder="Password"
-//             value={form.password}
-//             onChange={(e) =>
-//               setForm({ ...form, password: e.target.value })
-//             }
-//           />
-//           {errors.password && (
-//             <p style={{ color: "red" }}>{errors.password}</p>
-//           )}
-//         </div>
-
-//         <br />
-
-//         <button type="submit">
-//           {loading ? "Registering..." : "Register"}
-//         </button>
-
-//         {/*backend error */}
-//         {error && (
-//           <p style={{ color: "red" }}>{error}</p>
-//         )}
-//       </form>
-//     </div>
-//   );
-// }
-
-
 import { registerUser } from '../slices/authSlice'; 
 import { useNavigate } from 'react-router-dom'; 
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useState } from 'react';
 import Joi from 'joi';
 
 function Register() {
+
+    const error = useSelector((state) => {
+      return state.auth.error;
+    });
+
     const navigate = useNavigate(); 
     const dispatch = useDispatch(); 
     const [formData, setFormData] = useState({
@@ -216,6 +96,8 @@ function Register() {
   return (
     <div style={{ padding: '20px', maxWidth: '400px', margin: '0 auto' }}>
       <h1>Register Page</h1>
+      {/* consitional rendering: if error is present, then display the error */}
+      {error && <p> {error} </p>}
       <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '15px' }}>
         <div>
           <label htmlFor="username" style={{ display: 'block', marginBottom: '5px', textAlign: 'left' }}>
@@ -374,5 +256,132 @@ function Register() {
 }
 
 export default Register;
+
+
+
+
+// import { useState } from "react";
+// import Joi from "joi";
+// import { useDispatch, useSelector } from "react-redux";
+// import {useNavigate} from "react-router-dom"
+// import { registerUser } from "../slices/authSlice";
+
+// export default function Register() {
+//   const dispatch = useDispatch();
+//   const { loading, error } = useSelector((state) => state.auth);
+
+//   const [form, setForm] = useState({
+//     username: "",
+//     email: "",
+//     password: "",
+//   });
+
+//   const [errors, setErrors] = useState({});
+
+//   const schema = Joi.object({
+//     username: Joi.string().min(5).required().messages({
+//       "string.empty": "Username is required",
+//       "string.min": "Username must be at least 5 characters",
+//     }),
+//     email: Joi.string().email({ tlds: false }).required().messages({
+//       "string.email": "Enter valid email",
+//       "string.empty": "Email is required",
+//     }),
+//     password: Joi.string().min(6).required().messages({
+//       "string.min": "Password must be at least 6 characters",
+//       "string.empty": "Password is required",
+//     }),
+//   });
+
+//   const handleSubmit = (e) => {
+
+//     const redirect = () => {
+//       navigate('/login')
+//     }
+
+//     e.preventDefault();
+
+//     const { error } = schema.validate(form, { abortEarly: false });
+
+//     if (error) {
+//       const errorObj = {};
+//       error.details.forEach((err) => {
+//         errorObj[err.path[0]] = err.message;
+//       });
+//       setErrors(errorObj);
+//       return;
+//     }
+
+//     setErrors({});
+    
+//     //Dispatch Redux-Thunk
+//     dispatch(registerUser(form));
+//   };
+
+//   return (
+//     <div>
+//       <h3>Register Component</h3>
+
+//       <form onSubmit={handleSubmit}>
+//         <div>
+//           <input
+//             type="text"
+//             placeholder="Username"
+//             value={form.username}
+//             onChange={(e) =>
+//               setForm({ ...form, username: e.target.value })
+//             }
+//           />
+//           {errors.username && (
+//             <p style={{ color: "red" }}>{errors.username}</p>
+//           )}
+//         </div>
+
+//         <br />
+
+//         <div>
+//           <input
+//             type="email"
+//             placeholder="Email"
+//             value={form.email}
+//             onChange={(e) =>
+//               setForm({ ...form, email: e.target.value })
+//             }
+//           />
+//           {errors.email && (
+//             <p style={{ color: "red" }}>{errors.email}</p>
+//           )}
+//         </div>
+
+//         <br />
+
+//         <div>
+//           <input
+//             type="password"
+//             placeholder="Password"
+//             value={form.password}
+//             onChange={(e) =>
+//               setForm({ ...form, password: e.target.value })
+//             }
+//           />
+//           {errors.password && (
+//             <p style={{ color: "red" }}>{errors.password}</p>
+//           )}
+//         </div>
+
+//         <br />
+
+//         <button type="submit">
+//           {loading ? "Registering..." : "Register"}
+//         </button>
+
+//         {/*backend error */}
+//         {error && (
+//           <p style={{ color: "red" }}>{error}</p>
+//         )}
+//       </form>
+//     </div>
+//   );
+// }
 
  

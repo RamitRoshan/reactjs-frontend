@@ -1,184 +1,153 @@
-import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { loginUser } from "../slices/authSlice"; 
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom'; 
+import { useDispatch, useSelector} from 'react-redux'; 
+import { loginUser } from '../slices/authSlice'; 
+import Joi from 'joi';
 
-export default function Login() {
-  const dispatch = useDispatch();
+function Login() {
 
-  const { loading, error } = useSelector((state) => state.auth);
+  const error = useSelector((state) => {
+      return state.auth.error;
+    });
+  
+  const dispatch = useDispatch(); 
+  const navigate = useNavigate(); 
+  const [formData, setFormData] = useState({
+    email: '',
+    password: ''
+  });
 
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [errors, setErrors] = useState({});
+
+  // Define Joi schema
+  const schema = Joi.object({
+    email: Joi.string().email({ tlds: { allow: false } }).required().messages({
+      'string.empty': 'Email is required',
+      'string.email': 'Email must be a valid email address'
+    }),
+    password: Joi.string().required().messages({
+      'string.empty': 'Password is required'
+    })
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value
+    });
+    
+    // Clear error for the field being edited
+    if (errors[name]) {
+      setErrors({
+        ...errors,
+        [name]: ''
+      });
+    }
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    
+    const redirect = () => {
+      navigate('/dashboard'); 
+    }
 
-    dispatch(loginUser({ email, password }));
+    // Validate form data
+    const { error } = schema.validate(formData, { abortEarly: false });
+    
+    if (error) {
+      // Map errors to field names
+      const validationErrors = {};
+      error.details.forEach((detail) => {
+        validationErrors[detail.path[0]] = detail.message;
+      });
+      setErrors(validationErrors);
+    } else {
+      // Validation passed
+      console.log('Login Data:', formData);
+      dispatch(loginUser({ formData, redirect})); 
+      setErrors({});
+    }
   };
 
   return (
-    <div>
-      <h3>Login Component</h3>
-
-      <form onSubmit={handleSubmit}>
+    <div style={{ padding: '20px', maxWidth: '400px', margin: '0 auto' }}>
+      <h1>Login Page</h1>
+      {error && <p>{error}</p>}
+      <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '15px' }}>
         <div>
+          <label htmlFor="email" style={{ display: 'block', marginBottom: '5px', textAlign: 'left' }}>
+            Email:
+          </label>
           <input
             type="email"
-            placeholder="enter your email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            id="email"
+            name="email"
+            value={formData.email}
+            onChange={handleChange}
+            style={{ 
+              width: '100%', 
+              padding: '8px', 
+              fontSize: '14px',
+              borderRadius: '4px',
+              border: errors.email ? '1px solid red' : '1px solid #ccc'
+            }}
           />
+          {errors.email && (
+            <span style={{ color: 'red', fontSize: '12px', display: 'block', marginTop: '5px', textAlign: 'left' }}>
+              {errors.email}
+            </span>
+          )}
         </div>
-
-        <br />
 
         <div>
+          <label htmlFor="password" style={{ display: 'block', marginBottom: '5px', textAlign: 'left' }}>
+            Password:
+          </label>
           <input
             type="password"
-            placeholder="enter your password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
+            id="password"
+            name="password"
+            value={formData.password}
+            onChange={handleChange}
+            style={{ 
+              width: '100%', 
+              padding: '8px', 
+              fontSize: '14px',
+              borderRadius: '4px',
+              border: errors.password ? '1px solid red' : '1px solid #ccc'
+            }}
           />
+          {errors.password && (
+            <span style={{ color: 'red', fontSize: '12px', display: 'block', marginTop: '5px', textAlign: 'left' }}>
+              {errors.password}
+            </span>
+          )}
         </div>
 
-        <br />
-
-        <button type="submit">
-          {loading ? "Logging in..." : "Login"}
+        <button 
+          type="submit" 
+          style={{ 
+            padding: '10px', 
+            fontSize: '16px', 
+            backgroundColor: '#646cff', 
+            color: 'white', 
+            border: 'none', 
+            borderRadius: '4px', 
+            cursor: 'pointer',
+            marginTop: '10px'
+          }}
+        >
+          Login
         </button>
-
-        {error && (
-          <p style={{ color: "red" }}>{error}</p>
-        )}
       </form>
     </div>
   );
 }
 
+export default Login;
+ 
 
-// import { useState } from "react";
-// // import axios from "axios";
-// import axiosInstance from "../config/axios";
-
-
-// export default function Login() {
-//   const [email, setEmail] = useState("");
-
-//   const [password, setPassword] = useState("");
-
-//   // eslint-disable-next-line no-unused-vars
-//   const [emailError, setEmailError] = useState("");
-//   // eslint-disable-next-line no-unused-vars
-//   const [passwordError, setPasswordError] = useState("");
-
-//   // const handleSubmit = (e) => {
-//   //   e.preventDefault();
-//   //   // clear old errors
-//   //   setEmailError("");
-//   //   setPasswordError("");
-
-//   //   //It is a flag that helps us decide whether the form should be submitted or not.
-//   //   let isValid = true;
-
-//   //   // email validation
-//   //   // when Email is wrong - mark form as invalid
-//   //   if (!email) {
-//   //     setEmailError("Email is required");
-//   //     isValid = false;
-//   //   } else if (!email.includes("@")) {
-//   //     setEmailError("Enter a valid email");
-//   //     isValid = false;
-//   //   }
-
-//   //   // password validation
-//   //   //when Password is wrong - mark form as invalid
-//   //   if (!password) {
-//   //     setPasswordError("Password is required");
-//   //     isValid = false;
-//   //   } else if (password.length < 6) {
-//   //     setPasswordError("Password must be at least 6 characters");
-//   //     isValid = false;
-//   //   }
-//   //   //NOW we will print it
-//   //   if (isValid) {
-//   //     console.log("Login Details:");
-//   //     console.log("Email :" + email);
-//   //     console.log("Password: " + password);
-//   //   }
-//   //   // console.log("Login Details:");
-//   //   // console.log("Email :" + email);
-//   //   // console.log("Password: " + password);
-//   // };
-
-
-
-// console.log("");
-// // This function runs when the form is submitted
-// const handleSubmit = async (e) => {
-
-//   // Prevents page reload (default form behavior in HTML)
-//   e.preventDefault();
-
-//   try {
-//     // Sending POST request to backend login API
-//     // We send email and password as request body
-//     // const response = await axios.post(
-//     //   "http://localhost:3030/api/users/login",
-//     //   { email, password }
-//     // );
-
-//     const response = await axiosInstance.post("/users/login", { email, password });
-
-
-//     // Extract JWT token sent from backend after successful login
-//     const token = response.data.token;
-
-//     // Store token in browser localStorage
-//     // So user stays logged in even after refresh
-//     localStorage.setItem("token", token);
-
-//     // Show success message
-//     alert("Login Successful");
-
-//   } catch (err) {
-//     // If backend sends error (wrong password / user not found)
-//     // Show error message safely using optional chaining
-//     alert(err.response?.data?.error);
-//   }
-// };
-
-
-
-//   return (
-//     <div>
-//       <h3>Login Component</h3>
-
-//       <form onSubmit={handleSubmit}>
-//         <div>
-//           <input
-//             type="email"
-//             placeholder="enter your email"
-//             value={email}
-//             onChange={(e) => setEmail(e.target.value)}
-//           />
-//           {emailError && <p style={{ color: "red" }}>{emailError}</p>}
-//         </div>
-
-//         <br />
-//         <div>
-//           <input
-//             type="password"
-//             placeholder="enter your password"
-//             value={password}
-//             onChange={(e) => setPassword(e.target.value)}
-//           />
-//           {passwordError && <p style={{ color: "red" }}>{passwordError}</p>}
-//         </div>
-//         <br />
-//         <input type="submit" />
-//       </form>
-//     </div>
-//   );
-// }
-
+ 
  
