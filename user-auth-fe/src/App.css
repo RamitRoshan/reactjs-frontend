@@ -40,3 +40,43 @@
 .read-the-docs {
   color: #888;
 }
+
+
+/* Navbar container */
+nav {
+  background-color: #1e293b;
+  padding: 15px 30px;
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Nav links */
+nav a {
+  color: #f1f5f9;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 15px;
+  transition: all 0.3s ease;
+  padding: 6px 10px;
+  border-radius: 6px;
+}
+
+/* Hover effect */
+nav a:hover {
+  background-color: #334155 ;
+  color: #38bdf8;
+}
+
+/* Logout special style */
+nav a:last-child {
+  margin-left: auto;
+  background-color: #ef4444;
+  padding: 6px 12px;
+}
+
+nav a:last-child:hover {
+  background-color: #dc2626;
+  color: white;
+}

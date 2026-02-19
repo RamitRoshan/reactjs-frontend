@@ -2,13 +2,14 @@ import './App.css'
 import {Link, Routes, Route} from "react-router-dom";
 import Login from './components/Login';
 import Dashboard from './components/Dashboard';
-import Profile from './components/Profile';
+import Profile from './components/Profile'; 
 import PrivateRoute from './components/PrivateRoute';
 import { useContext } from 'react';
 import { AuthContext } from './context/Auth';
 
 function App() {
 
+  // eslint-disable-next-line no-unused-vars
   const { isLoggedIn, user, dispatch, handleLogout} = useContext(AuthContext);
   return (
     <div className='App'>
@@ -24,6 +25,9 @@ function App() {
               </li>
               <li>
                 <Link to="/profile">Profile</Link>
+              </li>
+              <li>
+                <Link to="/notes">Notes</Link>
               </li>
               <li>
                 <button onClick = {handleLogout}>Logout</button>
@@ -56,7 +60,6 @@ function App() {
             </PrivateRoute>
           }
         />
-         
       </Routes>
     </div>
   )
