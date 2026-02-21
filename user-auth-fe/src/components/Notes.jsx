@@ -1,11 +1,15 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { addNote, setError, clearError } from '../slices/notesSlice';
+
 
 export default function Notes() {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
+  const [success, setSuccess] = useState('');
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const error = useSelector((state) => state.notes.error);
 
   const handleSubmit = (e) => {
@@ -13,11 +17,13 @@ export default function Notes() {
 
     if (!title.trim()) {
       dispatch(setError('Title is required'));
+      setSuccess('');
       return;
     }
 
     if (!description.trim()) {
       dispatch(setError('Description is required'));
+      setSuccess('');
       return;
     }
 
@@ -25,7 +31,12 @@ export default function Notes() {
     setTitle('');
     setDescription('');
     dispatch(clearError());
-    alert('Note added successfully!');
+    setSuccess('Note added successfully! Redirecting to Notes List...');
+    
+    // Redirect to NotesList after 2 seconds
+    setTimeout(() => {
+      navigate('/noteslist');
+    }, 2000);
   };
 
   return (
@@ -41,6 +52,18 @@ export default function Notes() {
           borderRadius: '4px'
         }}>
           {error}
+        </div>
+      )}
+
+      {success && (
+        <div style={{ 
+          backgroundColor: '#e8f5e9', 
+          color: '#2e7d32', 
+          padding: '10px', 
+          marginBottom: '15px',
+          borderRadius: '4px'
+        }}>
+          {success}
         </div>
       )}
 
@@ -98,12 +121,12 @@ export default function Notes() {
             borderRadius: '4px',
             cursor: 'pointer',
             fontSize: '16px',
-            fontWeight: 'bold',
           }}
         >
-          Submit
+          Create Note
         </button>
       </form>
     </div>
   );
 }
+ 

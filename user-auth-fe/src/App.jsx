@@ -18,7 +18,6 @@ import PrivateRoute from './components/PrivateRoute'
 
 function App() { 
 
-
   const dispatch = useDispatch();
   const isLoggedIn = useSelector((state) => {
     return state.auth.isLoggedIn;
